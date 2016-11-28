@@ -40,7 +40,7 @@ if(email=null||email==''){
 	}
 	//邮箱校验
 		var email=document.getElementById("email").value;
-	alert(email);
+	//alert(email);
 	var vali=/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/;
    if(vali.test(email)){
 	   return ture;}
@@ -115,7 +115,7 @@ function createXmlHttp() {
 					<div>
 						<s:actionerror />
 					</div>
-					<form id="registerForm"   method="post" novalidate="novalidate" onsubmit="return checkForm();">
+					<form id="registerForm"  action="${pageContext.request.contextPath }/user_regist.action" method="post" novalidate="novalidate" onsubmit="return checkForm();">
 						<table>
 							<tbody><tr>
 								<th>

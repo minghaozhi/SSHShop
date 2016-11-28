@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.user.dao.UserDao;
 import com.shop.user.vo.User;
+import com.shop.utils.UUIDUtils;
 
 /**
 * @author minghaozhi 597575122@qq.com
@@ -24,5 +25,12 @@ public class UserService {
 	
 	public User findByUserName(String username) {
 		return userDao.findByUserName(username);
+	}
+   //业务层完成用户注册
+	public void save(User user) {
+		user.setState(0);  //0代表用户未激活， 1代表用户已被激活
+		String code=UUIDUtils.getUUID()+UUIDUtils.getUUID();
+		user.setCode(code);
+		userDao.save(user);
 	}
 }
