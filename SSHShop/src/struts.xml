@@ -9,6 +9,8 @@
 
 	<package name="shop" extends="struts-default" namespace="/">
 		
+		<default-action-ref name="index"></default-action-ref>
+		
 		<!-- 配置首页访问的Action -->
 		<action name="index" class="indexAction">
 			<result name="index">/WEB-INF/jsp/index.jsp</result>

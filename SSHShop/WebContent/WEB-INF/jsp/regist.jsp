@@ -8,14 +8,93 @@
 <title>会员注册</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/css/register.css" rel="stylesheet" type="text/css"/>
+<script >
+function checkForm(){
+	//校验用户名
+	//获得用户名文本框的值
+	var username=document.getElementById("username").value;
+	if(username=null||username==''){
+		alert("用户名不能为空！");
+		return false;
+	}
+	//校验密码
+	//获得密码文本框的值
+	var password=document.getElementById("password").value;
+	if(password=null||password==''){
+		alert("密码不能为空！");
+		return false;
+	}
+	var email=document.getElementById("email").value;
+if(email=null||email==''){
+	alert("请输入邮箱！");
+	return false;
+}
+	//确认密码
+	var repassword=document.getElementById("repassword").value;
+	var password=document.getElementById("password").value;
+	
+	if(repassword!=password){
+		
+		alert("两次密码输入不一致，请重新输入！");
+		return false;
+	}
+	//邮箱校验
+		var email=document.getElementById("email").value;
+	alert(email);
+	var vali=/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/;
+   if(vali.test(email)){
+	   return ture;}
+   else{
+	alert("邮箱格式不正确，请重新输入！");
+	return false;
+}
 
+}
+function checkUsername() {
+	//获得文本框的值
+	var username=document.getElementById("username").value();
+	//1.创建异步交互的对象
+	var xhr=createXmlHttp();
+	//2.设置监听
+	xhr.onreadystatechange=function(){
+		if (xhr.readyState==4) {
+			if (xhr.status==200) {
+				document.getElementById("span1").innerHTML=xhr.responseText;
+			}
+		}
+		
+	}
+	//3.打开连接
+	xhr.open("get","${pageContext.request.contextPath}/user_checkUserName.action?time="+new Date().getTime()+"&username="+username,ture);
+	//4.发送
+	xhr.send(null);
+}
+function createXmlHttp() {
+	var xmlHttp;
+	try {
+		xmlHttp=new XMLHttpRequest();
+	} catch (e) {
+		try {
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+		} catch (e) {
+			try {
+				xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {
+				// TODO: handle exception
+			}
+		}
+	}
+	return xmlHttp;
+}
+
+</script>
 </head>
 <body>
 <div class="container header">
 	<div class="span5">
 		<div class="logo">
 			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="网上商城">
 			</a>
 		</div>
 	</div>
@@ -36,7 +115,7 @@
 					<div>
 						<s:actionerror />
 					</div>
-					<form id="registerForm" action="${ pageContext.request.contextPath }/user_regist.action"  method="post" novalidate="novalidate" onsubmit="return checkForm();">
+					<form id="registerForm"   method="post" novalidate="novalidate" onsubmit="return checkForm();">
 						<table>
 							<tbody><tr>
 								<th>
