@@ -52,7 +52,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		User existUser=userService.findByUserName(user.getUsername());
 		//获得response对象，向页面输出
 		  HttpServletResponse response = ServletActionContext.getResponse();
-		  response.setContentType("text/html,charset=utf-8");
+		  response.setContentType("text/html;charset=utf-8");
 		//判断
 		if (existUser!=null) {
 			//查询到该用户，该用户已存在

@@ -52,7 +52,7 @@ if(email=null||email==''){
 }
 function checkUsername() {
 	//获得文本框的值
-	var username=document.getElementById("username").value();
+	var username=document.getElementById("username").value;
 	//1.创建异步交互的对象
 	var xhr=createXmlHttp();
 	//2.设置监听
@@ -65,7 +65,7 @@ function checkUsername() {
 		
 	}
 	//3.打开连接
-	xhr.open("get","${pageContext.request.contextPath}/user_checkUserName.action?time="+new Date().getTime()+"&username="+username,ture);
+	xhr.open("GET","${pageContext.request.contextPath}/user_checkUserName.action?time="+new Date().getTime()+"&username="+username,true); 
 	//4.发送
 	xhr.send(null);
 }

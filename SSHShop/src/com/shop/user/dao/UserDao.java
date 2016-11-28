@@ -17,9 +17,9 @@ public class UserDao extends HibernateDaoSupport{
 
 	//按名称查询是否有用户
 	public User findByUserName(String username){
-		String hql="from user where username=?";
+		String hql="from User where username=?";
 		List<User> list= this.getHibernateTemplate().find(hql,username);
-		if (list!=null||list.size()>0) {
+		if (list!=null&&list.size()>0) {
 			return list.get(0);
 			}
 		return null;
