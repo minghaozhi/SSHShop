@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * 用户模块Action的类
  * 
- * @author 
+ * @author minghaozhi
  * 
  */
 public class UserAction extends ActionSupport{
