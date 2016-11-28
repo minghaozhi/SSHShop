@@ -1,4 +1,4 @@
-package cn.itcast.shop.index.action;
+package com.shop.home.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

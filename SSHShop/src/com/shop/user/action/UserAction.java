@@ -1,4 +1,4 @@
-package cn.itcast.shop.user.action;
+package com.shop.user.action;
 
 
 

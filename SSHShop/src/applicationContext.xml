@@ -54,11 +54,11 @@
 	<!-- Action的配置 ===========================-->
 	
 	<!-- 首页访问的Action -->
-	<bean id="indexAction" class="cn.itcast.shop.index.action.IndexAction" scope="prototype">
+	<bean id="indexAction" class="com.shop.home.action.IndexAction" scope="prototype">
 	
 	</bean>	
 	<!-- 用户模块的Action -->
-	<bean id="userAction" class="cn.itcast.shop.user.action.UserAction" scope="prototype">
+	<bean id="userAction" class="com.shop.user.action.UserAction" scope="prototype">
 		
 	</bean>
 	
