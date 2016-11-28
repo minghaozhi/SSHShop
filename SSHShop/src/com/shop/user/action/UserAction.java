@@ -3,8 +3,8 @@ package com.shop.user.action;
 
 
 import com.opensymphony.xwork2.ActionSupport;
-
-
+/**
+ */
 /**
  * 用户模块Action的类
  * 
