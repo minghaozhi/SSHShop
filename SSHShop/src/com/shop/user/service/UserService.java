@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.shop.user.dao.UserDao;
 import com.shop.user.vo.User;
+import com.shop.utils.MailUtils;
 import com.shop.utils.UUIDUtils;
 
 /**
@@ -32,5 +33,21 @@ public class UserService {
 		String code=UUIDUtils.getUUID()+UUIDUtils.getUUID();
 		user.setCode(code);
 		userDao.save(user);
+		//发送激活邮件
+		MailUtils.sendMail(user.getEmail(), code);
+	}
+//业务层根据激活码查询
+	public User finByCode(String code) {
+		return userDao.findByCode(code);
+	}
+  //修改用户状态
+	public void update(User existUser) {
+		userDao.update(existUser);
+		
+	}
+    //用户登录的方法
+	public User login(User user) {
+		return userDao.login(user);
+		
 	}
 }

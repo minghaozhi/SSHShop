@@ -3,7 +3,7 @@
 <div class="span10 last">
 	<div class="topNav clearfix">
 		<ul>
-			<s:if test="#session.existUser == null">
+			<s:if test="#session.user1 == null">
 			<li id="headerLogin" class="headerLogin" style="display: list-item;">
 				<a href="${ pageContext.request.contextPath }/user_loginPage.action">登录</a>|</li>
 			<li id="headerRegister" class="headerRegister"
@@ -12,7 +12,7 @@
 			</s:if>
 			<s:else>
 			<li id="headerLogin" class="headerLogin" style="display: list-item;">
-				<s:property value="#session.existUser.name"/>
+				<s:property value="#session.user1.name"/>
 				|</li>
 			<li id="headerLogin" class="headerLogin" style="display: list-item;">
 				<a href="#">我的订单</a>

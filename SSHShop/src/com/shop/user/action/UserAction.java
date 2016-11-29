@@ -69,7 +69,48 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
  */
    public String regist(){
 	   userService.save(user);
-	   return NONE;
+	   this.addActionMessage("注册成功！请去邮箱激活");
+	   return "msg";
    }
-
+   /**
+    * 用户激活的方法
+    */
+   public String active(){
+	   //根据激活码查询用户：
+	 User existUser=userService.finByCode(user.getCode());
+	 if (existUser==null) {
+		 //激活码错误、
+		 this.addActionMessage("激活失败！激活码错误或失效！");
+		
+	}else {
+		existUser.setState(1);
+		existUser.setCode(null);
+		userService.update(existUser);
+		this.addActionMessage("激活成功，请登录！");
+	}
+	   return "msg";
+   }
+   /**
+    * 跳转到登录页面
+    */
+   public String loginPage(){
+	   return "loginPage";
+   }
+   /**
+    * 登陆的方法
+    */
+   public String login(){
+	 User user1=userService.login(user);
+	 if (user1==null) {
+		 this.addActionError("登陆失败，用户名或密码错误！");
+		 return "loginSuccess";
+		
+	}else {
+		//将用户的信息存入到session中
+		ServletActionContext.getRequest().getSession().setAttribute("user1", user1);
+		//页面跳转
+		return "loginSucess";
+	}
+	 
+   }
 }
