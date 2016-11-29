@@ -103,13 +103,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 User user1=userService.login(user);
 	 if (user1==null) {
 		 this.addActionError("登陆失败，用户名或密码错误！");
-		 return "loginSuccess";
+		 return LOGIN;
 		
 	}else {
 		//将用户的信息存入到session中
 		ServletActionContext.getRequest().getSession().setAttribute("user1", user1);
 		//页面跳转
-		return "loginSucess";
+		return "loginSuccess";
 	}
 	 
    }
