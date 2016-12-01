@@ -86,6 +86,10 @@ function createXmlHttp() {
 	}
 	return xmlHttp;
 }
+function change(){
+	var img1=document.getElementById("checkImg");
+	img1.src="${pageContext.request.contextPath}/checkImg.action?"+new Date().getTime();
+}
 
 </script>
 </head>

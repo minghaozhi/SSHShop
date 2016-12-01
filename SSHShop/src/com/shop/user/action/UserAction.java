@@ -36,6 +36,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		
 		return user;
 	}
+	//接收验证码
+	private String checkcode;
+
+	
+	public void setCheckcode(String checkcode) {
+		this.checkcode = checkcode;
+	}
 	/**
 	 * 跳转到注册页面的执行方法
 	 */
@@ -68,6 +75,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
  * 用户注册的方法
  */
    public String regist(){
+	   //判断验证码程序：
+	   //从session中获得验证码的随机值
+	String checkCode=  (String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+	if (!checkcode.equalsIgnoreCase(checkCode)) {
+		this.addActionError("验证码输入错误！");
+		return "checkCode";
+	}
 	   userService.save(user);
 	   this.addActionMessage("注册成功！请去邮箱激活");
 	   return "msg";
@@ -112,5 +126,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		return "loginSuccess";
 	}
 	 
+   }
+   /**
+    * 用户退出的方法
+    */
+   public String quit(){
+	   //销毁seesion
+ 
+   ServletActionContext.getRequest().getSession().invalidate();
+   return "quit";
    }
 }
