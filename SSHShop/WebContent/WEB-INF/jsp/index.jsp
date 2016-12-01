@@ -57,7 +57,7 @@
 						<ul class="tabContent" style="display: block;">
 						<s:iterator var="p" value="hPList">
 									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
+										<a href="${pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
 									</li>
 									</s:iterator>
 															</ul>
@@ -137,30 +137,11 @@
 						</div>
 						 -->						
 						 <ul class="tabContent" style="display: block;">
+								<s:iterator var="nPList" value="nPList">
 									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/222.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/333.jpg" style="display: block;"></a>									</li>
-									
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/444.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/555.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/666.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/image/777.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/888.jpg" style="display: block;"></a>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/999.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
+										<a href="${pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#nPList.pid"/> target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#nPList.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
 									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/1000.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/image/1001.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
-									</li>
+									</s:iterator>	
 						</ul>
 						<ul class="tabContent" style="display: none;">
 									<li>

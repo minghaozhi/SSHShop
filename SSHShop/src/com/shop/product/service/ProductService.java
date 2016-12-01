@@ -25,6 +25,16 @@ public class ProductService {
 		
 		return productDao.findHotProduct();
 	}
+	//首页最新商品查询
+	public List<Product> findNewProduct() {
+		
+		return productDao.findNewProduct();
+	}
+	//根据商品的id查询商品
+	public Product findByPid(Integer pid) {
+		
+		return productDao.findByPid(pid);
+	}
 	
 	
 	

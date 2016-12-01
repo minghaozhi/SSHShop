@@ -72,6 +72,19 @@
 		<!-- 注入service -->
 		<property name="userService" ref="userService"/>
 	</bean>
+	
+	<!-- 商品模块的Action -->
+	<bean id="productAction" class="com.shop.product.action.ProductAction" scope="prototype">
+  <property name="productService" ref="productService"></property>
+	
+	
+	</bean>
+	
+	
+	
+	
+	
+	
 	<!-- service的配置 ==========================-->
 	<bean id="userService" class="com.shop.user.service.UserService">
 	<property name="userDao" ref="userDao"/>
