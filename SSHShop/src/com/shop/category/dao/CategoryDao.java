@@ -16,6 +16,7 @@ public class CategoryDao extends HibernateDaoSupport{
     //DAO查询所有一级分类的方法
 	public List<Category> findAll() {
 		String hql="from Category";
+		
 		List<Category> list=this.getHibernateTemplate().find(hql);
 		
 		return list;

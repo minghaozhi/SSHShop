@@ -2,6 +2,8 @@ package com.shop.product.vo;
 
 import java.util.Date;
 
+import com.shop.categorySecond.vo.CategorySecond;
+
 /**
 * @author minghaozhi 597575122@qq.com
 * @version 创建时间：2016年12月1日 下午3:54:09
@@ -17,8 +19,8 @@ public class Product {
 	private String pdesc;
 	private Integer is_hot;
 	private Date pdate;
-	//二级分类的外键：使用二级分类的对象
-	private Integer csid;
+	//：使用二级分类的对象
+	private CategorySecond categorySecond;
 	public Integer getPid() {
 		return pid;
 	}
@@ -67,11 +69,11 @@ public class Product {
 	public void setPdate(Date pdate) {
 		this.pdate = pdate;
 	}
-	public Integer getCsid() {
-		return csid;
+	public CategorySecond getCategorySecond() {
+		return categorySecond;
 	}
-	public void setCsid(Integer csid) {
-		this.csid = csid;
+	public void setCategorySecond(CategorySecond categorySecond) {
+		this.categorySecond = categorySecond;
 	}
 	
 	

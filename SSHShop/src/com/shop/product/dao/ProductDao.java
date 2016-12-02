@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.shop.product.vo.Product;
+import com.shop.utils.PageHibernateCallback;
 
 /**
 * @author minghaozhi 597575122@qq.com
@@ -31,6 +32,7 @@ public class ProductDao extends HibernateDaoSupport{
 	}
     //首页最新商品查询
 	public List<Product> findNewProduct() {
+		
 		DetachedCriteria criteria=DetachedCriteria.forClass(Product.class);
 		//按日期倒序
 		criteria.addOrder(Order.desc("pdate"));
@@ -43,6 +45,25 @@ public class ProductDao extends HibernateDaoSupport{
 	public Product  findByPid(Integer pid) {
 		
 		return this.getHibernateTemplate().get(Product.class, pid);
+	}
+	//根据分类的id查询商品的个数
+	public int findCountCid(Integer cid) {
+		String hql="select count(*) from Product p where p.categorySecond.category.cid=?";
+	List<Long> list=this.getHibernateTemplate().find(hql,cid);
+	if (list!=null&&list.size()>0) {
+		return list.get(0).intValue();
+	}
+		return 0;
+	}
+	//根据商品id查询商品的集合
+	public List<Product> findByCidPage(Integer cid, int begin, int limit) {
+		String hql = "select p from Product p join p.categorySecond cs join cs.category c where c.cid = ?";
+		// 分页另一种写法:
+		List<Product> list = this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql, new Object[]{cid}, begin, limit));
+		if(list != null && list.size() > 0){
+			return list;
+		}
+		return null;
 	}
 
 }

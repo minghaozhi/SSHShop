@@ -39,7 +39,7 @@
 	<ul class="mainNav">
 		<li><a href="${pageContext.request.contextPath }/index.action">首页</a> |</li>
 		<s:iterator var="category" value="#session.cList">
-		<li><a href="./蔬菜分类.htm"><s:property value="#category.cname"/></a> |</li>		
+			<li><a href="${ pageContext.request.contextPath }/product_findByCid.action?cid=<s:property value="#category.cid"/>&page=1"><s:property value="#category.cname"/></a> |</li>
     </s:iterator>
 	</ul>
 </div>
